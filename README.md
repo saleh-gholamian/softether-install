@@ -1,16 +1,18 @@
-# softether-install.sh
+## softether-install
 Set up SoftEther VPN server on Debian, Ubuntu, Fedora, CentOS or Arch Linux.
 
-#0 change ssh port
+#0 Change ssh port
 ```bash
 nano /etc/ssh/sshd_config
 ```
 
 
-#1 update the ubuntu serverserver
+
+#1 Update the ubuntu serverserver
 ```bash
 apt update && apt upgrade -y
 ```
+
 
 
 #2 Install dependency
@@ -19,74 +21,83 @@ apt-get -y install build-essential wget make curl gcc  wget zlib1g-dev tzdata gi
 ```
 
 
-#3 download Sofether installer file
+
+#3 Download Sofether installer file
 ```bash
 wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.41-9782-beta/softether-vpnserver-v4.41-9782-beta-2022.11.17-linux-x64-64bit.tar.gz
 ```
 
-#4 extract the installer file & remove installer file
+
+
+#4 Extract the installer file & remove installer file
 ```bash
 tar xzf softether-vpnserver-v4.41-9782-beta-2022.11.17-linux-x64-64bit.tar.gz
 rm softether-vpnserver-v4.41-9782-beta-2022.11.17-linux-x64-64bit.tar.gz
 ```
 
 
-#5 go to the program folder
+
+#5 Po to the program folder
 ```bash
 cd vpnserver
 ```
 
 
-#6 ompile the program
+
+#6 Compile the program
 ```bash
 make
 ```
 
 
-#7 back to the main directory
+
+#7 Back to the main directory
 ```bash
 cd ..
 ```
 
 
-#8 move vpnserver to new folder
+
+#8 Move vpnserver to new folder
 ```bash
 mv vpnserver /usr/local
 ```
 
 
-#9 change directory to new folder
+#9 Change directory to new folder
 ```bash
 cd /usr/local/vpnserver/
 ```
 
 
-#10 access control
+
+#10 Access control
 ```bash
 chmod 600 *
 chmod 700 vpnserver vpncmd
 ```
 
 
-#11 start vpnserver
+
+#11 Start vpnserver
 ```bash
 ./vpnserver start
 ```
 
 
-#12 open command line management panel
+#12 Open command line management panel
 ```bash
 ./vpncmd
 ```
 
 
-#13 set password for softether panel
+#13 Set password for softether panel
 ```bash
 serverPasswordSet
 ```
 
 
-#14 preparing the service (copy and paste the entire command below)
+#14 Preparing the service (copy and paste the entire command below)
 ```bash
 sudo cat >> /lib/systemd/system/vpnserver.service << EOF
 [Unit]
@@ -103,7 +114,7 @@ EOF
 ```
 
 
-#15 enabling and start vpnserver
+#15 Enabling and start vpnserver
 ```bash
 systemctl enable vpnserver
 systemctl start vpnserver
@@ -111,13 +122,17 @@ systemctl status vpnserver
 ```
 
 
-#16 reboot system
+#16 Reboot system
 ```bash
 reboot
 ```
 
+#16 Check vpnserver status
+```bash
+reboot
+```
 
-#17 setup firewall settings and enabling firewall
+#18 Setup firewall settings and enabling firewall
 ```bash
 ufw allow 2222
 ufw allow 1194
@@ -133,14 +148,14 @@ ufw enable
 ```
 
 
-#18 enable IPv4 forwadring 
+#19 Enable IPv4 forwadring 
 ```bash
 echo 1 > /proc/sys/net/ipv4/ip_forward
 cat /proc/sys/net/ipv4/ip_forward
 ```
 
 
-#19 install google BBR
+#20 Install google BBR
 ```bash
 wget https://raw.githubusercontent.com/teddysun/across/master/bbr.sh
 chmod +x bbr.sh
