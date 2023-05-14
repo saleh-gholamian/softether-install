@@ -118,7 +118,6 @@ EOF
 ```bash
 systemctl enable vpnserver
 systemctl start vpnserver
-systemctl status vpnserver
 ```
 
 
@@ -129,7 +128,7 @@ reboot
 
 #16 Check vpnserver status
 ```bash
-reboot
+systemctl status vpnserver
 ```
 
 #18 Setup firewall settings and enabling firewall
