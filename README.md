@@ -37,7 +37,7 @@ rm softether-vpnserver-v4.41-9782-beta-2022.11.17-linux-x64-64bit.tar.gz
 
 
 
-#5 Po to the program folder
+#5 Go to the program folder
 ```bash
 cd vpnserver
 ```
